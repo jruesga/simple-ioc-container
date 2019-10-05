@@ -3,7 +3,7 @@ sudo: false
 language: java
 
 jdk:
-  - oraclejdk8
+  - openjdk8
 
 script:
   - ./gradlew --no-daemon --parallel clean test javadoc assemble
