@@ -5,8 +5,6 @@ import com.ruesga.siocc.resolvers.DependencyResolutionException;
 import com.ruesga.siocc.resolvers.DependencyResolver;
 import com.ruesga.siocc.resolvers.NoDependencyResolvedException;
 import com.ruesga.siocc.resolvers.NonAccessibleFieldException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import java.lang.reflect.Field;
@@ -37,11 +35,14 @@ import java.util.stream.Collectors;
  *                         .register(Service.class, ServiceImpl.class)
  *                         .build();
  *     IoC container = IoC.create(configuration, resolver);
+ *
+ *     ...
+ *
  *     Service service = container.resolve(Service.class);
  *     service.callMethod();
  * </pre>
  * <p>
- * This container uses the <a href="https://jcp.org/en/jsr/detail?id=330">JSR-330</link> standard
+ * This container uses the <a href="https://jcp.org/en/jsr/detail?id=330">JSR-330</a> standard
  * to determine the fields that need to be auto-injected, by detecting {@link javax.inject.Inject} annotation.
  * <pre>
  * public class Service1 {
@@ -56,8 +57,6 @@ import java.util.stream.Collectors;
  * @see Configuration
  */
 public class IoC {
-    private final static Logger logger = LoggerFactory.getLogger(IoC.class);
-
     private final Configuration configuration;
     private final List<DependencyResolver> resolvers;
 

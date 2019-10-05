@@ -28,7 +28,11 @@ BasicDependencyResolver resolver =
             new BasicDependencyResolver.Builder()
                     .register(Service.class, ServiceImpl.class)
                     .build();
-IoC container = IoC.create(configuration, resolver);
+IoCInstanceHolder.register("default", IoC.create(configuration, resolver));
+
+...
+
+IoC container = IoCInstanceHolder.of("default");
 Service service = container.resolve(Service.class);
 service.callMethod();
 ```
