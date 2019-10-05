@@ -1,0 +1,14 @@
+sudo: false
+
+language: java
+
+jdk:
+  - oraclejdk8
+
+script:
+  - ./gradlew --no-daemon --parallel clean test javadoc assemble
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
