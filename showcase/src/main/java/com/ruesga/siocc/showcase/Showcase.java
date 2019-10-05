@@ -4,6 +4,7 @@ import com.ruesga.siocc.Configuration;
 import com.ruesga.siocc.IoC;
 import com.ruesga.siocc.resolvers.AnnotationDependencyResolver;
 import com.ruesga.siocc.resolvers.BasicDependencyResolver;
+import com.ruesga.siocc.showcase.components.Class1;
 import com.ruesga.siocc.showcase.components.Service1;
 import com.ruesga.siocc.showcase.components.Service2;
 import com.ruesga.siocc.showcase.components.Service2Impl;
@@ -19,20 +20,22 @@ public class Showcase {
         BasicDependencyResolver basicResolver =
                 new BasicDependencyResolver.Builder()
                         .register(Service2.class, Service2Impl.class)
+                        .register(Class1.class)
                         .build();
         AnnotationDependencyResolver annotationResolver =
                 new AnnotationDependencyResolver.Builder()
                         .scan("com.ruesga.siocc.showcase.components")
                         .build();
 
-        // Create the IoC contatiner
+        // Create the IoC container
         IoC container = IoC.create(configuration, basicResolver, annotationResolver);
 
 
         // Resolve classes
         Service1 service1 = container.resolve(Service1.class);
-        service1.print("hello!"); // Service1Impl => hello! from AnnotationDependencyResolver
+        service1.print("hello!"); // "Service1Impl => hello!" from AnnotationDependencyResolver
         Service2 service2 = container.resolve(Service2.class);
-        service2.print("hello!"); // Service2Impl => hello! from BasicDependencyResolver
+        service2.print("hello!"); // "Service2Impl => hello!" from BasicDependencyResolver
+        service2.doSomething();   // "Class1 => doSomething!" from BasicDependencyResolver
     }
 }

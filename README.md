@@ -33,6 +33,16 @@ Service service = container.resolve(Service.class);
 service.callMethod();
 ```
 
+This container uses the [JSR-330](https://jcp.org/en/jsr/detail?id=330 "JSR 330") standard to determine the fields that need to be auto-injected, by detecting [javax.inject.Inject](https://docs.oracle.com/javaee/6/api/javax/inject/Inject.html "javax.inject.Inject") annotation.
+
+```
+public class Service1 {
+    @Inject
+    private Service2 service2;
+}
+public class Service2 {
+}
+```
 
 ### Licenses
 

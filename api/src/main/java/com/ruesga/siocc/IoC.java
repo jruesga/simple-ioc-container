@@ -40,6 +40,17 @@ import java.util.stream.Collectors;
  *     Service service = container.resolve(Service.class);
  *     service.callMethod();
  * </pre>
+ * <p>
+ * This container uses the <a href="https://jcp.org/en/jsr/detail?id=330">JSR-330</link> standard
+ * to determine the fields that need to be auto-injected, by detecting {@link javax.inject.Inject} annotation.
+ * <pre>
+ * public class Service1 {
+ *     &#64;Inject
+ *     private Service2 service2;
+ * }
+ * public class Service2 {
+ * }
+ * </pre>
  *
  * @see DependencyResolver
  * @see Configuration
