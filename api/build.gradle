@@ -1,0 +1,11 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+def libraries = rootProject.ext.libraries
+
+archivesBaseName = 'simple-ioc-container-api'
+
+dependencies {
+    compile "javax.inject:javax.inject:1"
+    testImplementation "org.apache.commons:commons-math3:${libraries.commons_math}"
+}

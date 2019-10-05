@@ -1,0 +1,8 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+archivesBaseName = 'simple-ioc-container-basic-resolver'
+
+dependencies {
+    compile project(':api')
+}

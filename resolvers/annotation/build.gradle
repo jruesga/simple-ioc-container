@@ -1,0 +1,15 @@
+ext {
+    libraries = [
+         reflections         : '0.9.11'
+    ]
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+archivesBaseName = 'simple-ioc-container-annotation-resolver'
+
+dependencies {
+    compile project(':api')
+    compile "org.reflections:reflections:${libraries.reflections}"
+}

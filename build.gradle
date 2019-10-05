@@ -1,0 +1,61 @@
+ext {
+    libraries = [
+         slf4j                      : '1.7.25',
+         logging                    : '2.12.1',
+         commons_math               : '3.6.1'
+    ]
+
+    testLibraries = [
+        junit                       : '4.12',
+        hamcrest                    : '2.1'
+    ]
+}
+
+allprojects {
+    buildscript {
+        repositories {
+            jcenter()
+            mavenCentral()
+        }
+        dependencies {
+        }
+    }
+
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
+}
+
+subprojects {
+    afterEvaluate {project ->
+        if (project.plugins.hasPlugin('java')) {
+            dependencies {
+                compile "org.slf4j:slf4j-api:${libraries.slf4j}"
+                compile "org.apache.logging.log4j:log4j-core:${libraries.logging}"
+                compile "org.apache.logging.log4j:log4j-core:${libraries.logging}"
+                compile "org.apache.logging.log4j:log4j-api:${libraries.logging}"
+                compile "org.apache.logging.log4j:log4j-1.2-api:${libraries.logging}"
+                compile "org.apache.logging.log4j:log4j-slf4j-impl:${libraries.logging}"
+
+                testCompile "junit:junit:${testLibraries.junit}"
+                testCompile "org.hamcrest:hamcrest-core:${testLibraries.hamcrest}"
+                testCompile "org.hamcrest:hamcrest-library:${testLibraries.hamcrest}"
+            }
+
+            sourceCompatibility = 1.8
+            targetCompatibility = 1.8
+        }
+
+        if (project.plugins.hasPlugin('maven')) {
+            group = 'com.ruesga.simple-ioc-container'
+            version = '1.0-SNAPSHOT'
+        }
+    }
+}

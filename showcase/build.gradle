@@ -1,0 +1,10 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+archivesBaseName = 'simple-ioc-container-showcase'
+
+dependencies {
+    implementation project(':api')
+    implementation project(':resolvers:basic')
+    implementation project(':resolvers:annotation')
+}

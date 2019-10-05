@@ -1,0 +1,20 @@
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+out/
+build/
+.gradle/
+
+# Project files
+*.iml
+.idea
+*.iws
+.settings
+.project
+.classpath
+
+# Thumbnail db
+.DS_Store
