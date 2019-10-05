@@ -1,4 +1,4 @@
-Simple IoC Container
+Simple IoC Container [![Build Status](https://travis-ci.org/jruesga/simple-ioc-container.svg?branch=master)](https://travis-ci.org/jruesga/simple-ioc-container/branches) [![Apache 2.0](https://img.shields.io/github/license/jruesga/simple-ioc-container.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 ====================
 
 ### Description
